@@ -8,11 +8,11 @@ This is the URDF model for the Intel RealSense 430 camera, in it's
 aluminum peripherial evaluation case.
 -->
 
-<robot name="intel_realsense" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="sensor_d435" xmlns:xacro="http://ros.org/wiki/xacro">
   <!--File includes-->
   <xacro:include filename="$(find franka_panda_description)/urdf/camera/_d435.gazebo.xacro"/>
 
-  <xacro:macro name="sensor_d435" params="name:=camera topics_ns:=camera parent *origin">
+  <xacro:macro name="sensor_d435" params="name:=camera topics_ns:=camera parent xyz rpy">
     <xacro:property name="M_PI" value="3.1415926535897931" />
   
     <!-- The following values are approximate, and the camera node
@@ -41,11 +41,11 @@ aluminum peripherial evaluation case.
 
 
     <!-- camera body, with origin at bottom screw mount -->
-    <!--<joint name="${name}_joint" type="fixed">
-      <xacro:insert_block name="origin" />
+    <joint name="${name}_joint" type="fixed">
       <parent link="${parent}"/>
       <child link="${name}_bottom_screw_frame" />
-    </joint> -->
+      <origin xyz="${xyz}" rpy="${rpy}"/>
+    </joint>
     <link name="${name}_bottom_screw_frame"/>
 
     <joint name="${name}_link_joint" type="fixed">
@@ -54,12 +54,12 @@ aluminum peripherial evaluation case.
       <child link="${name}_link" />
     </joint>
 
-    <link name="${name}_realsense_link">
+    <link name="${name}_link">
       <visual>
       <origin xyz="${d435_cam_mount_from_center_offset} ${-d435_cam_depth_py} 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
         <geometry>
           <!-- <box size="${d435_cam_width} ${d435_cam_height} ${d435_cam_depth}"/> -->
-          <mesh filename="package://realsense2_description/meshes/d435.dae" />
+          <mesh filename="package://franka_panda_description/meshes/camera/d435.dae" />
           <!--<mesh filename="package://realsense2_description/meshes/d435/d435.dae" />-->
         </geometry>
         <material name="${name}_aluminum"/>
