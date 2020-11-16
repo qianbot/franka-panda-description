@@ -3,8 +3,12 @@
   <xacro:arg name="robot_name" default="panda"/>
   <xacro:arg name="load_gripper" default="true"/>
   <xacro:arg name="load_gazebo" default="false"/>
+  <xacro:arg name="intel_realsense" default="true"/>
 
-  
+  <!-- ========================================================================================== -->
+  <!-- Set xacro properties -->
+  <xacro:property name="urdf_path"    value="$(find franka_panda_description)/urdf"/>
+  <!-- ========================================================================================== -->
   <xacro:include filename="$(find franka_panda_description)/robots/panda_arm.xacro"/>
 
   <xacro:if value="$(arg load_gripper)">
@@ -24,5 +28,14 @@
   <xacro:unless value="$(arg load_gazebo)">  
     <xacro:panda_arm />
   </xacro:unless>
-
+  
+  <!-- Intel Realsense Camera -->
+  <xacro:if value="$(arg intel_realsense)">
+    <xacro:include filename="${urdf_path}/camera/_d435.urdf.xacro"/>
+    <joint name="intel_realsense_joint" type="fixed">
+      <origin xyz="0 -0.4 0.6" rpy="0 0.4 ${pi + -0.5}"/>
+      <parent link="$(arg robot_name)_base_link"/>
+      <child link="intel_realsense_bottom_screw_frame"/>
+    </joint>
+  </xacro:if>
 </robot>
