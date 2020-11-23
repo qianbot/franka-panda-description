@@ -2,14 +2,9 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
   <xacro:arg name="robot_name"      default="panda"/>
   <xacro:arg name="load_gripper"    default="false"/>
-  <xacro:arg name="load_hand"       default="false" />
+  <xacro:arg name="load_hand"       default="true" />
   <xacro:arg name="load_gazebo"     default="false"/>
   <xacro:arg name="intel_realsense" default="true" />
-  
-  <!-- ========================================================================================== -->
-  <!-- Set xacro properties -->
-  <xacro:property name="urdf_path"    value="$(find franka_panda_description)/urdf"/>
-  <!-- ========================================================================================== -->
 
   <!-- Panda Arm -->
   <xacro:include filename="$(find franka_panda_description)/robots/panda_arm.xacro"/>
