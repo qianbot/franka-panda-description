@@ -38,7 +38,7 @@
   <!-- Intel Realsense Camera -->
   <xacro:if value="$(arg intel_realsense)">
     <xacro:include filename="$(find franka_panda_description)/urdf/camera/_d435.urdf.xacro" />
-    <xacro:sensor_d435 parent="panda_link0" xyz="1.5 0 0.6" rpy="0 0.3 ${pi}"/> 
+    <xacro:sensor_d435 parent="panda_link0" xyz="0.8 -1 0.6" rpy="0 0.3 ${pi/2}"/> 
   </xacro:if>
 
 </robot>
