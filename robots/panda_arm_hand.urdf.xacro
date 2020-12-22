@@ -26,16 +26,16 @@
   <!-- Default Panda Gripper -->
   <xacro:if value="$(arg load_gripper)">
     <xacro:include filename="$(find franka_panda_description)/robots/hand.xacro"/>
-    <xacro:hand ns="panda" rpy="0 0 ${-pi/4}" connected_to="panda_link8"        />
+    <xacro:hand ns="panda" rpy="0 0 ${pi/4}" connected_to="panda_link8"        />
   </xacro:if>
 
   <!-- Hithand, joint between hithand_base and panda_link_8 inside hithand.xacro-->
   <xacro:if value="$(arg load_hand)">
     <xacro:include filename="$(find hithand_description)/urdf/hithand.xacro"/>
-    <xacro:hithand attached="true" ns="panda" rpy="0 0 ${-pi/2}" parent="panda_link8"/>
+    <xacro:hithand attached="true" ns="panda" rpy="0 0 0" parent="panda_link8"/>
   </xacro:if>
 
-  <!-- Intel Realsense Camera -->
+  <!-- Intel Realsense Camera ${-pi/2}-->
   <xacro:if value="$(arg intel_realsense)">
     <xacro:include filename="$(find franka_panda_description)/urdf/camera/_d435.urdf.xacro" />
     <xacro:sensor_d435 parent="panda_link0" xyz="0.86 -1 0.35" rpy="0 0.3 ${pi/2}"/> 
