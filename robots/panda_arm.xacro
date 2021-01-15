@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
-  <xacro:macro name="panda_arm" params="arm_id:='panda' description_pkg:='franka_description' 
+  <xacro:macro name="panda_arm" params="arm_id:='panda' description_pkg:='franka_panda_description' 
 				connected_to:='' in_gazebo='false' xyz:='0 0 0' rpy:='0 0 0'">
 
     <xacro:property name="joint_damping" value="1.0"/>
@@ -30,11 +30,11 @@
           <mesh filename="package://${description_pkg}/meshes/visual/link0.dae"/>
         </geometry>
       </visual>
-      <collision>
+      <!-- <collision>
         <geometry>
           <mesh filename="package://${description_pkg}/meshes/collision/link0.stl"/>
         </geometry>
-      </collision>
+      </collision> -->
       <xacro:unless value="${in_gazebo == 'false'}">
         <inertial>
           <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -49,11 +49,11 @@
           <mesh filename="package://${description_pkg}/meshes/visual/link1.dae"/>
         </geometry>
       </visual>
-      <collision>
+      <!-- <collision>
         <geometry>
           <mesh filename="package://${description_pkg}/meshes/collision/link1.stl"/>
         </geometry>
-      </collision>
+      </collision> -->
       <inertial>
         <origin xyz="3.875e-03 2.081e-03 -0.1750" rpy="0 0 0"/>
         <mass value="4.970684"/>
@@ -75,11 +75,11 @@
           <mesh filename="package://${description_pkg}/meshes/visual/link2.dae"/>
         </geometry>
       </visual>
-      <collision>
+      <!-- <collision>
         <geometry>
           <mesh filename="package://${description_pkg}/meshes/collision/link2.stl"/>
         </geometry>
-      </collision>
+      </collision> -->
       <inertial>
         <origin xyz="-3.141e-03 -2.872e-02 3.495e-03" rpy="0 0 0"/>
         <mass value="0.646926"/>
@@ -101,11 +101,11 @@
           <mesh filename="package://${description_pkg}/meshes/visual/link3.dae"/>
         </geometry>
       </visual>
-      <collision>
+      <!-- <collision>
         <geometry>
           <mesh filename="package://${description_pkg}/meshes/collision/link3.stl"/>
         </geometry>
-      </collision>
+      </collision> -->
       <inertial>
         <origin xyz="2.7518e-02 3.9252e-02 -6.6502e-02" rpy="0 0 0"/>
         <mass value="3.228604"/>
@@ -127,11 +127,11 @@
           <mesh filename="package://${description_pkg}/meshes/visual/link4.dae"/>
         </geometry>
       </visual>
-      <collision>
+      <!-- <collision>
         <geometry>
           <mesh filename="package://${description_pkg}/meshes/collision/link4.stl"/>
         </geometry>
-      </collision>
+      </collision> -->
       <inertial>
         <origin xyz="-5.317e-02 1.04419e-01 2.7454e-02" rpy="0 0 0"/>
         <mass value="3.587895"/>

@@ -3,7 +3,6 @@
   <xacro:arg name="robot_name"      default="panda"/>
   <xacro:arg name="load_gripper"    default="false"/>
   <xacro:arg name="load_hand"       default="true" />
-  <xacro:arg name="load_gazebo"     default="false"/>
   <xacro:arg name="intel_realsense" default="true" />
 
   <!-- Panda Arm -->
@@ -11,17 +10,13 @@
 
 
   <!-- Gazebo -->
-  <xacro:if value="$(arg load_gazebo)">  
-    <xacro:include filename="$(find franka_panda_description)/robots/panda.gazebo.xacro"       />
-    <xacro:include filename="$(find franka_panda_description)/robots/panda.transmission.xacro" /> 
-    <xacro:panda_arm          arm_id="$(arg robot_name)" in_gazebo="true" xyz="0 0 0" rpy="0 0 0" />
-    <xacro:panda_gazebo       robot_name="$(arg robot_name)" load_gripper="$(arg load_gripper)"/>
-    <xacro:panda_transmission robot_name="$(arg robot_name)" load_gripper="$(arg load_gripper)"/> 
-  </xacro:if> 
+  <xacro:include filename="$(find franka_panda_description)/robots/panda.gazebo.xacro"       />
+  <xacro:include filename="$(find franka_panda_description)/robots/panda.transmission.xacro" /> 
+  <xacro:panda_arm          arm_id="$(arg robot_name)" in_gazebo="true" xyz="0 0 0" rpy="0 0 0" />
+  <xacro:panda_gazebo       robot_name="$(arg robot_name)" load_gripper="$(arg load_gripper)"/>
+  <xacro:panda_transmission robot_name="$(arg robot_name)" load_gripper="$(arg load_gripper)"/> 
 
-  <xacro:unless value="$(arg load_gazebo)">  
-    <xacro:panda_arm />
-  </xacro:unless>  
+ 
   
   <!-- Default Panda Gripper -->
   <xacro:if value="$(arg load_gripper)">
