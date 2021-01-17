@@ -140,8 +140,8 @@ This is the Gazebo URDF model for the Intel RealSense D435 camera
       	<rangeMaxDepth>10.0</rangeMaxDepth>
       	<pointCloud>true</pointCloud>
       	<pointCloudTopicName>depth/points</pointCloudTopicName>
-      	<pointCloudCutoff>0.5</pointCloudCutoff>
-        <!-- <pointCloudCutoffMax>9.0</pointCloudCutoffMax> -->
+      	<pointCloudCutoff>0.2</pointCloudCutoff>
+        <pointCloudCutoffMax>2</pointCloudCutoffMax>
       </plugin>
     </gazebo>
 
