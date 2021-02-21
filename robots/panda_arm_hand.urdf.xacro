@@ -40,7 +40,7 @@
   <!-- Intel Realsense D415 Camera -->
   <xacro:if value="$(eval realsense == 'd415')">
     <xacro:include filename="$(find franka_panda_description)/urdf/camera/_d415.urdf.xacro" />
-    <xacro:sensor_d415 parent="panda_link0" xyz="0.5 -0.75 0.35" rpy="0 0.3 ${pi/2}"/> 
+    <xacro:sensor_d415 parent="panda_link0" xyz="0.5 -0.85 0.35" rpy="0 0.3 ${pi/2}"/> 
   </xacro:if>
 
 </robot>
