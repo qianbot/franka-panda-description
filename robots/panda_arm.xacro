@@ -1,7 +1,6 @@
 <?xml version='1.0'?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
-  <xacro:macro name="panda_arm" params="arm_id:='panda' description_pkg:='franka_panda_description' 
-				connected_to:='' in_gazebo='false' xyz:='0 0 0' rpy:='0 0 0'">
+  <xacro:macro name="panda_arm" params="arm_id:='panda' description_pkg:='franka_panda_description' connected_to:='' in_gazebo='false' xyz:='0 0 0' rpy:='0 0 0'">
 
     <xacro:property name="joint_damping" value="1.0"/>
     <xacro:unless value="${not connected_to}">
@@ -153,11 +152,11 @@
           <mesh filename="package://${description_pkg}/meshes/visual/link5.dae"/>
         </geometry>
       </visual>
-      <collision>
+      <!-- <collision>
         <geometry>
           <mesh filename="package://${description_pkg}/meshes/collision/link5.stl"/>
         </geometry>
-      </collision>
+      </collision> -->
       <inertial>
         <origin xyz="-1.1953e-02 4.1065e-02 -3.8437e-02" rpy="0 0 0"/>
         <mass value="1.225946"/>
@@ -179,11 +178,11 @@
           <mesh filename="package://${description_pkg}/meshes/visual/link6.dae"/>
         </geometry>
       </visual>
-      <collision>
+      <!-- <collision>
         <geometry>
           <mesh filename="package://${description_pkg}/meshes/collision/link6.stl"/>
         </geometry>
-      </collision>
+      </collision> -->
       <inertial>
         <origin xyz="6.0149e-02 -1.4117e-02 -1.0517e-02" rpy="0 0 0"/>
         <mass value="1.666555"/>
@@ -205,11 +204,11 @@
           <mesh filename="package://${description_pkg}/meshes/visual/link7.dae"/>
         </geometry>
       </visual>
-      <collision>
+      <!-- <collision>
         <geometry>
           <mesh filename="package://${description_pkg}/meshes/collision/link7.stl"/>
         </geometry>
-      </collision>
+      </collision> -->
       <inertial>
         <origin xyz="1.0517e-02 -4.252e-03 6.1597e-02" rpy="0 0 0"/>
         <mass value="7.35522e-01"/>
