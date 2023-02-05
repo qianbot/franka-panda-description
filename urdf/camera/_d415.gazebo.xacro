@@ -29,7 +29,7 @@ This is the Gazebo URDF model for the Intel RealSense D415 camera
       <min_depth>0</min_depth>-->
       <sensor name="${camera_name}color" type="camera">
         <camera name="${camera_name}">
-          <horizontal_fov>${69.4*deg_to_rad}</horizontal_fov>
+          <horizontal_fov>${64*deg_to_rad}</horizontal_fov>
           <image>
             <!--<width>1920</width>
             <height>1080</height>-->
