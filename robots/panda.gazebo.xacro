@@ -72,31 +72,31 @@
     <!-- Configure self collision properties per link -->
     <!-- The gripper fingers do not have this flag otherwise the gripper would not be allowed to close correctly -->
     <gazebo reference="${robot_name}_link1">
-      <selfCollide>true</selfCollide>
+      <selfCollide>false</selfCollide>
     </gazebo>
 
     <gazebo reference="${robot_name}_link2">
-      <selfCollide>true</selfCollide>
+      <selfCollide>false</selfCollide>
     </gazebo>
 
     <gazebo reference="${robot_name}_link3">
-      <selfCollide>true</selfCollide>
+      <selfCollide>false</selfCollide>
     </gazebo>
 
     <gazebo reference="${robot_name}_link4">
-      <selfCollide>true</selfCollide>
+      <selfCollide>false</selfCollide>
     </gazebo>
 
     <gazebo reference="${robot_name}_link5">
-      <selfCollide>true</selfCollide>
+      <selfCollide>false</selfCollide>
     </gazebo>
 
     <gazebo reference="${robot_name}_link6">
-      <selfCollide>true</selfCollide>
+      <selfCollide>false</selfCollide>
     </gazebo>
 
     <gazebo reference="${robot_name}_link7">
-      <selfCollide>true</selfCollide>
+      <selfCollide>false</selfCollide>
     </gazebo>
   
     <!-- Collision sensors on all links. This is not present on the real robot, it is used only in simulation to detect collisions. -->
