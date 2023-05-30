@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
   <xacro:arg name="robot_name"      default="panda"/>
   <xacro:arg name="load_gripper"    default="false"/>
@@ -15,7 +15,7 @@
   <xacro:include filename="$(find franka_panda_description)/robots/panda.transmission.xacro" /> 
   <xacro:panda_arm          arm_id="$(arg robot_name)" in_gazebo="true" xyz="0 0 0" rpy="0 0 0" />
   <xacro:panda_gazebo       robot_name="$(arg robot_name)" load_gripper="$(arg load_gripper)"/>
-  <xacro:panda_transmission robot_name="$(arg robot_name)" load_gripper="$(arg load_gripper)"/> 
+  <xacro:panda_transmission robot_name="$(arg robot_name)" load_gripper="$(arg load_gripper)" use_gazebo_control="false"/> 
 
   <!-- Default Panda Gripper -->
   <xacro:if value="$(arg load_gripper)">
