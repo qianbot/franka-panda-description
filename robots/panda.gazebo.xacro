@@ -1,6 +1,13 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<!-- ROS control plugin -->
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <!-- This tag gets rid of an error that popped up in version 8.6 -->
+        <legacyModeNS>true</legacyModeNS>
+      </plugin>
+    </gazebo>
 
     <xacro:macro name="panda_gazebo" params="robot_name load_gripper">
       <gazebo reference="${robot_name}_joint7">

@@ -1,29 +1,45 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
-  <xacro:arg name="robot_name" default="panda"/>
-  <xacro:arg name="load_gripper" default="true"/>
-  <xacro:arg name="load_gazebo" default="false"/>
+  <xacro:arg name="robot_name"      default="panda"/>
+  <xacro:arg name="load_gripper"    default="false"/>
+  <xacro:arg name="load_hand"       default="true" />
+  <xacro:arg name="realsense"       default="d435" />
+
   <xacro:arg name="use_gazebo_control" default="false"/>
   <xacro:arg name="connected_to" default=""/> <!-- If using a different frame with ${connected_to} param, make sure 'world' frame exists in the TF tree -->
   
+  <!-- Panda Arm -->
   <xacro:include filename="$(find franka_panda_description)/robots/panda_arm.xacro"/>
+  <!-- Gazebo -->
+  <xacro:include filename="$(find franka_panda_description)/robots/panda.gazebo.xacro"       />
+  <xacro:include filename="$(find franka_panda_description)/robots/panda.transmission.xacro" /> 
+  <xacro:panda_arm          arm_id="$(arg robot_name)" in_gazebo="true" xyz="0 0 0" rpy="0 0 0" />
+  <xacro:panda_gazebo       robot_name="$(arg robot_name)" load_gripper="$(arg load_gripper)"/>
+  <xacro:panda_transmission robot_name="$(arg robot_name)" load_gripper="$(arg load_gripper)"/> 
 
+  <!-- Default Panda Gripper -->
   <xacro:if value="$(arg load_gripper)">
     <xacro:include filename="$(find franka_panda_description)/robots/hand.xacro"/>
-    <xacro:hand ns="panda" rpy="0 0 ${-pi/4}" connected_to="panda_link8"/>
+    <xacro:hand ns="panda" rpy="0 0 ${pi/4}" connected_to="panda_link8"/>
   </xacro:if>
 
-  <xacro:if value="$(arg load_gazebo)">  
-    <xacro:include filename="$(find franka_panda_description)/robots/panda.gazebo.xacro"/>
-    <xacro:include filename="$(find franka_panda_description)/robots/panda.transmission.xacro"/>
-    
-    <xacro:panda_arm in_gazebo="true"  connected_to="$(arg connected_to)"/>
-    <xacro:panda_gazebo robot_name="$(arg robot_name)" load_gripper="$(arg load_gripper)"/>
-    <xacro:panda_transmission robot_name="$(arg robot_name)" load_gripper="$(arg load_gripper)" use_gazebo_control="$(arg use_gazebo_control)"/>
+  <!-- Hithand, joint between hithand_base and panda_link_8 inside hithand.xacro-->
+  <xacro:if value="$(arg load_hand)">
+    <xacro:include filename="$(find hithand_description)/urdf/hithand.xacro"/>
+    <xacro:hithand attached="true" ns="panda" rpy="0 0 0" parent="panda_link8"/>
   </xacro:if>
 
-  <xacro:unless value="$(arg load_gazebo)">  
-    <xacro:panda_arm />
-  </xacro:unless>
+  <!-- Intel Realsense D435 Camera -->
+  <xacro:if value="$(eval realsense == 'd435')">
+    <xacro:include filename="$(find franka_panda_description)/urdf/camera/_d435.urdf.xacro" />
+    <!-- <xacro:sensor_d435 parent="panda_link0" xyz="0.86 -1 0.35" rpy="0 0.3 ${pi/2}"/>  -->
+    <xacro:sensor_d435 parent="panda_link0" xyz="0.5 -0.75 0.35" rpy="0 0.3 ${pi/2}"/> 
+  </xacro:if>
+
+  <!-- Intel Realsense D415 Camera -->
+  <xacro:if value="$(eval realsense == 'd415')">
+    <xacro:include filename="$(find franka_panda_description)/urdf/camera/_d415.urdf.xacro" />
+    <xacro:sensor_d415 parent="panda_link0" xyz="0.5 -0.85 0.35" rpy="0 0.3 ${pi/2}"/> 
+  </xacro:if>
 
 </robot>
