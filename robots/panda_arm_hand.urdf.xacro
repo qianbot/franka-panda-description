@@ -3,7 +3,7 @@
   <xacro:arg name="robot_name"      default="panda"/>
   <xacro:arg name="load_gripper"    default="false"/>
   <xacro:arg name="load_hand"       default="false" />
-  <xacro:arg name="load_robotiq"       default="true" />
+  <xacro:arg name="load_robotiq"       default="false" />
   <xacro:arg name="realsense"       default="d435" />
 
   <!-- Panda Arm -->
