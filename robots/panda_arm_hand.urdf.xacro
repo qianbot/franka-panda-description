@@ -25,16 +25,12 @@
     <xacro:hand ns="panda" rpy="0 0 ${pi/4}" connected_to="panda_link8"        />
   </xacro:if>
 
-  <!-- src/robotiq/robotiq_3f_gripper_visualization/cfg/robotiq-3f-gripper_articulated.xacro -->
   <!-- Default Robotiq 3f Gripper -->
-  <!-- <xacro:if value="$(arg load_hand)">
-    <xacro:include filename="$(find robotiq_3f_gripper_visualization)/cfg/robotiq-3f-gripper_articulated.xacro"/>
-    <xacro:robotiq-3f-gripper_articulated prefix="" attached="true" ns="panda" rpy="0 0 0" parent="panda_link8"/>
-  </xacro:if> -->
-  
   <xacro:if value="$(arg load_robotiq)">
-    <xacro:include filename="$(find robotiq_3f_gripper_visualization)/cfg/robotiq_hand.xacro"/>
-    <xacro:robotiq_hand prefix="" attached="true" reflect="" parent="panda_link8" xyz="0 0 0" rpy="0 0 0"/>
+    <xacro:include filename="$(find robotiq_3f_gripper_visualization)/cfg/robotiq-3f-gripper_articulated.xacro"/>
+    <xacro:robotiq-3f-gripper_articulated prefix="" attached="true" ns="panda" rpy="0 0 0" xyz="0 0 0" parent="panda_link8"/>
+    <!-- <xacro:include filename="$(find robotiq_3f_gripper_visualization)/cfg/robotiq_hand.xacro"/> -->
+    <!-- <xacro:robotiq_hand prefix="" attached="true" reflect="" parent="panda_link8" xyz="0 0 0" rpy="0 0 0"/> -->
   </xacro:if>
 
   <!-- Hithand, joint between hithand_base and panda_link_8 inside hithand.xacro-->
