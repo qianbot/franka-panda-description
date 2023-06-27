@@ -27,7 +27,6 @@
 
   <!-- Default Robotiq 3f Gripper -->
   <xacro:if value="$(arg load_robotiq)">
-    <!-- <xacro:include filename="$(find robotiq_3f_gripper_visualization)/cfg/robotiq-3f-gripper_articulated.xacro"/> -->
     <xacro:include filename="$(find robotiq_3f_gripper_visualization)/cfg/robotiq_hand.xacro"/>
   </xacro:if>
 
