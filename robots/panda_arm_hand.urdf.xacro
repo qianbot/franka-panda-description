@@ -2,7 +2,8 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
   <xacro:arg name="robot_name"      default="panda"/>
   <xacro:arg name="load_gripper"    default="false"/>
-  <xacro:arg name="load_hand"       default="true" />
+  <xacro:arg name="load_hand"       default="false" />
+  <xacro:arg name="load_robotiq"       default="false" />
   <xacro:arg name="realsense"       default="d435" />
 
   <!-- Panda Arm -->
@@ -22,6 +23,11 @@
   <xacro:if value="$(arg load_gripper)">
     <xacro:include filename="$(find franka_panda_description)/robots/hand.xacro"/>
     <xacro:hand ns="panda" rpy="0 0 ${pi/4}" connected_to="panda_link8"        />
+  </xacro:if>
+
+  <!-- Default Robotiq 3f Gripper -->
+  <xacro:if value="$(arg load_robotiq)">
+    <xacro:include filename="$(find robotiq_3f_gripper_visualization)/cfg/robotiq_hand.xacro"/>
   </xacro:if>
 
   <!-- Hithand, joint between hithand_base and panda_link_8 inside hithand.xacro-->

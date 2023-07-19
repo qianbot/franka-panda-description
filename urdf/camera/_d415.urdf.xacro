@@ -7,7 +7,8 @@ This is the URDF model for the Intel RealSense 415 camera, in its
 aluminum peripherial evaluation case.
 -->
 
-<robot name="sensor_d415" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="sensor_d415"
+  xmlns:xacro="http://ros.org/wiki/xacro">
   <!-- Includes -->
   <xacro:include filename="$(find franka_panda_description)/urdf/camera/_d415.gazebo.xacro"/>
 
@@ -34,7 +35,7 @@ aluminum peripherial evaluation case.
     <xacro:property name="d415_cam_depth_py" value="0.020"/>
     <xacro:property name="d415_cam_depth_pz" value="${d415_cam_height/2}"/>
     <material name="${name}_aluminum">
-	  <color rgba="0.5 0.5 0.5 1"/>
+      <color rgba="0.5 0.5 0.5 1"/>
     </material>
 
 
@@ -55,9 +56,9 @@ aluminum peripherial evaluation case.
 
     <link name="${name}_link">
       <visual>
-      <origin xyz="${d415_cam_mount_from_center_offset} ${-d415_cam_depth_py} 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
+        <origin xyz="${d415_cam_mount_from_center_offset} ${-d415_cam_depth_py} 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
         <geometry>
-	         <mesh filename="package://franka_panda_description/meshes/camera/d415.stl" />
+          <mesh filename="package://franka_panda_description/meshes/camera/d415.stl" />
         </geometry>
         <material name="${name}_aluminum"/>
       </visual>
@@ -77,64 +78,64 @@ aluminum peripherial evaluation case.
 
     <!-- camera depth joints and links -->
     <joint name="${name}_depth_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <parent link="${name}_link"/>
-    <child link="${name}_depth_frame" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="${name}_link"/>
+      <child link="${name}_depth_frame" />
     </joint>
     <link name="${name}_depth_frame"/>
 
     <joint name="${name}_depth_optical_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
-    <parent link="${name}_depth_frame" />
-    <child link="${name}_depth_optical_frame" />
+      <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+      <parent link="${name}_depth_frame" />
+      <child link="${name}_depth_optical_frame" />
     </joint>
     <link name="${name}_depth_optical_frame"/>
 
     <!-- camera left IR joints and links -->
     <joint name="${name}_left_ir_joint" type="fixed">
-    <origin xyz="0 ${d415_cam_depth_to_left_ir_offset} 0" rpy="0 0 0" />
-    <!-- <parent link="${name}_link" /> -->
-    <parent link="${name}_depth_frame" />
-    <child link="${name}_left_ir_frame" />
+      <origin xyz="0 ${d415_cam_depth_to_left_ir_offset} 0" rpy="0 0 0" />
+      <!-- <parent link="${name}_link" /> -->
+      <parent link="${name}_depth_frame" />
+      <child link="${name}_left_ir_frame" />
     </joint>
     <link name="${name}_left_ir_frame"/>
 
     <joint name="${name}_left_ir_optical_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
-    <parent link="${name}_left_ir_frame" />
-    <child link="${name}_left_ir_optical_frame" />
+      <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+      <parent link="${name}_left_ir_frame" />
+      <child link="${name}_left_ir_optical_frame" />
     </joint>
     <link name="${name}_left_ir_optical_frame"/>
 
     <!-- camera right IR joints and links -->
     <joint name="${name}_right_ir_joint" type="fixed">
-    <origin xyz="0 ${d415_cam_depth_to_right_ir_offset} 0" rpy="0 0 0" />
-    <!-- <parent link="${name}_link" /> -->
-    <parent link="${name}_depth_frame" />
-    <child link="${name}_right_ir_frame" />
+      <origin xyz="0 ${d415_cam_depth_to_right_ir_offset} 0" rpy="0 0 0" />
+      <!-- <parent link="${name}_link" /> -->
+      <parent link="${name}_depth_frame" />
+      <child link="${name}_right_ir_frame" />
     </joint>
     <link name="${name}_right_ir_frame"/>
 
     <joint name="${name}_right_ir_optical_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
-    <parent link="${name}_right_ir_frame" />
-    <child link="${name}_right_ir_optical_frame" />
+      <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+      <parent link="${name}_right_ir_frame" />
+      <child link="${name}_right_ir_optical_frame" />
     </joint>
     <link name="${name}_right_ir_optical_frame"/>
 
     <!-- camera color joints and links -->
     <joint name="${name}_color_joint" type="fixed">
-        <origin xyz="0 ${d415_cam_depth_to_color_offset} 0" rpy="0 0 0" />
-        <!-- <parent link="${name}_link" /> -->
-        <parent link="${name}_depth_frame" />
-        <child link="${name}_color_frame" />
+      <origin xyz="0 ${d415_cam_depth_to_color_offset} 0" rpy="0 0 0" />
+      <!-- <parent link="${name}_link" /> -->
+      <parent link="${name}_depth_frame" />
+      <child link="${name}_color_frame" />
     </joint>
     <link name="${name}_color_frame"/>
 
     <joint name="${name}_color_optical_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
-    <parent link="${name}_color_frame" />
-    <child link="${name}_color_optical_frame" />
+      <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+      <parent link="${name}_color_frame" />
+      <child link="${name}_color_optical_frame" />
     </joint>
     <link name="${name}_color_optical_frame"/>
 
